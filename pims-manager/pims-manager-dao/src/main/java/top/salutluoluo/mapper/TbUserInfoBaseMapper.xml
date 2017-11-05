@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="top.salutluoluo.mapper.TbUserInfoBaseMapper" >
+  <resultMap id="BaseResultMap" type="top.salutluoluo.pojo.TbUserInfoBase" >
+    <id column="user_global_id" property="userGlobalId" jdbcType="VARCHAR" />
+    <result column="user_name" property="userName" jdbcType="VARCHAR" />
+    <result column="login_password" property="loginPassword" jdbcType="VARCHAR" />
+    <result column="telephone" property="telephone" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="identity_card_validate" property="identityCardValidate" jdbcType="INTEGER" />
+    <result column="user_nickname" property="userNickname" jdbcType="VARCHAR" />
+    <result column="user_avatar" property="userAvatar" jdbcType="VARCHAR" />
+    <result column="credit_rating" property="creditRating" jdbcType="INTEGER" />
+    <result column="gender" property="gender" jdbcType="INTEGER" />
+    <result column="age" property="age" jdbcType="INTEGER" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
+    <result column="health" property="health" jdbcType="INTEGER" />
+    <result column="marriage" property="marriage" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="INTEGER" />
+    <result column="native_place" property="nativePlace" jdbcType="VARCHAR" />
+    <result column="nation" property="nation" jdbcType="VARCHAR" />
+    <result column="education" property="education" jdbcType="INTEGER" />
+    <result column="graduate_institutions" property="graduateInstitutions" jdbcType="VARCHAR" />
+    <result column="graduation_time" property="graduationTime" jdbcType="DATE" />
+    <result column="work_unit" property="workUnit" jdbcType="VARCHAR" />
+    <result column="work_place" property="workPlace" jdbcType="VARCHAR" />
+    <result column="job_position" property="jobPosition" jdbcType="VARCHAR" />
+    <result column="first_registration_time" property="firstRegistrationTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    user_global_id, user_name, login_password, telephone, email, identity_card_validate, 
+    user_nickname, user_avatar, credit_rating, gender, age, birthday, health, marriage, 
+    address, country, native_place, nation, education, graduate_institutions, graduation_time, 
+    work_unit, work_place, job_position, first_registration_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="top.salutluoluo.pojo.TbUserInfoBaseExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from tb_user_info_base
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    <include refid="Base_Column_List" />
+    from tb_user_info_base
+    where user_global_id = #{userGlobalId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from tb_user_info_base
+    where user_global_id = #{userGlobalId,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="top.salutluoluo.pojo.TbUserInfoBaseExample" >
+    delete from tb_user_info_base
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="top.salutluoluo.pojo.TbUserInfoBase" >
+    insert into tb_user_info_base (user_global_id, user_name, login_password, 
+      telephone, email, identity_card_validate, 
+      user_nickname, user_avatar, credit_rating, 
+      gender, age, birthday, 
+      health, marriage, address, 
+      country, native_place, nation, 
+      education, graduate_institutions, graduation_time, 
+      work_unit, work_place, job_position, 
+      first_registration_time)
+    values (#{userGlobalId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
+      #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{identityCardValidate,jdbcType=INTEGER}, 
+      #{userNickname,jdbcType=VARCHAR}, #{userAvatar,jdbcType=VARCHAR}, #{creditRating,jdbcType=INTEGER}, 
+      #{gender,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, 
+      #{health,jdbcType=INTEGER}, #{marriage,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{country,jdbcType=INTEGER}, #{nativePlace,jdbcType=VARCHAR}, #{nation,jdbcType=VARCHAR}, 
+      #{education,jdbcType=INTEGER}, #{graduateInstitutions,jdbcType=VARCHAR}, #{graduationTime,jdbcType=DATE}, 
+      #{workUnit,jdbcType=VARCHAR}, #{workPlace,jdbcType=VARCHAR}, #{jobPosition,jdbcType=VARCHAR}, 
+      #{firstRegistrationTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="top.salutluoluo.pojo.TbUserInfoBase" >
+    insert into tb_user_info_base
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="userGlobalId != null" >
+        user_global_id,
+      </if>
+      <if test="userName != null" >
+        user_name,
+      </if>
+      <if test="loginPassword != null" >
+        login_password,
+      </if>
+      <if test="telephone != null" >
+        telephone,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="identityCardValidate != null" >
+        identity_card_validate,
+      </if>
+      <if test="userNickname != null" >
+        user_nickname,
+      </if>
+      <if test="userAvatar != null" >
+        user_avatar,
+      </if>
+      <if test="creditRating != null" >
+        credit_rating,
+      </if>
+      <if test="gender != null" >
+        gender,
+      </if>
+      <if test="age != null" >
+        age,
+      </if>
+      <if test="birthday != null" >
+        birthday,
+      </if>
+      <if test="health != null" >
+        health,
+      </if>
+      <if test="marriage != null" >
+        marriage,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="nativePlace != null" >
+        native_place,
+      </if>
+      <if test="nation != null" >
+        nation,
+      </if>
+      <if test="education != null" >
+        education,
+      </if>
+      <if test="graduateInstitutions != null" >
+        graduate_institutions,
+      </if>
+      <if test="graduationTime != null" >
+        graduation_time,
+      </if>
+      <if test="workUnit != null" >
+        work_unit,
+      </if>
+      <if test="workPlace != null" >
+        work_place,
+      </if>
+      <if test="jobPosition != null" >
+        job_position,
+      </if>
+      <if test="firstRegistrationTime != null" >
+        first_registration_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="userGlobalId != null" >
+        #{userGlobalId,jdbcType=VARCHAR},
+      </if>
+      <if test="userName != null" >
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardValidate != null" >
+        #{identityCardValidate,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null" >
+        #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatar != null" >
+        #{userAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        #{creditRating,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="health != null" >
+        #{health,jdbcType=INTEGER},
+      </if>
+      <if test="marriage != null" >
+        #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="nativePlace != null" >
+        #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        #{education,jdbcType=INTEGER},
+      </if>
+      <if test="graduateInstitutions != null" >
+        #{graduateInstitutions,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null" >
+        #{graduationTime,jdbcType=DATE},
+      </if>
+      <if test="workUnit != null" >
+        #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="workPlace != null" >
+        #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPosition != null" >
+        #{jobPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="firstRegistrationTime != null" >
+        #{firstRegistrationTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="top.salutluoluo.pojo.TbUserInfoBaseExample" resultType="java.lang.Integer" >
+    select count(*) from tb_user_info_base
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update tb_user_info_base
+    <set >
+      <if test="record.userGlobalId != null" >
+        user_global_id = #{record.userGlobalId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userName != null" >
+        user_name = #{record.userName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.loginPassword != null" >
+        login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="record.telephone != null" >
+        telephone = #{record.telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.identityCardValidate != null" >
+        identity_card_validate = #{record.identityCardValidate,jdbcType=INTEGER},
+      </if>
+      <if test="record.userNickname != null" >
+        user_nickname = #{record.userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userAvatar != null" >
+        user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creditRating != null" >
+        credit_rating = #{record.creditRating,jdbcType=INTEGER},
+      </if>
+      <if test="record.gender != null" >
+        gender = #{record.gender,jdbcType=INTEGER},
+      </if>
+      <if test="record.age != null" >
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.birthday != null" >
+        birthday = #{record.birthday,jdbcType=DATE},
+      </if>
+      <if test="record.health != null" >
+        health = #{record.health,jdbcType=INTEGER},
+      </if>
+      <if test="record.marriage != null" >
+        marriage = #{record.marriage,jdbcType=INTEGER},
+      </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        country = #{record.country,jdbcType=INTEGER},
+      </if>
+      <if test="record.nativePlace != null" >
+        native_place = #{record.nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nation != null" >
+        nation = #{record.nation,jdbcType=VARCHAR},
+      </if>
+      <if test="record.education != null" >
+        education = #{record.education,jdbcType=INTEGER},
+      </if>
+      <if test="record.graduateInstitutions != null" >
+        graduate_institutions = #{record.graduateInstitutions,jdbcType=VARCHAR},
+      </if>
+      <if test="record.graduationTime != null" >
+        graduation_time = #{record.graduationTime,jdbcType=DATE},
+      </if>
+      <if test="record.workUnit != null" >
+        work_unit = #{record.workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="record.workPlace != null" >
+        work_place = #{record.workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="record.jobPosition != null" >
+        job_position = #{record.jobPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="record.firstRegistrationTime != null" >
+        first_registration_time = #{record.firstRegistrationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update tb_user_info_base
+    set user_global_id = #{record.userGlobalId,jdbcType=VARCHAR},
+      user_name = #{record.userName,jdbcType=VARCHAR},
+      login_password = #{record.loginPassword,jdbcType=VARCHAR},
+      telephone = #{record.telephone,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      identity_card_validate = #{record.identityCardValidate,jdbcType=INTEGER},
+      user_nickname = #{record.userNickname,jdbcType=VARCHAR},
+      user_avatar = #{record.userAvatar,jdbcType=VARCHAR},
+      credit_rating = #{record.creditRating,jdbcType=INTEGER},
+      gender = #{record.gender,jdbcType=INTEGER},
+      age = #{record.age,jdbcType=INTEGER},
+      birthday = #{record.birthday,jdbcType=DATE},
+      health = #{record.health,jdbcType=INTEGER},
+      marriage = #{record.marriage,jdbcType=INTEGER},
+      address = #{record.address,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=INTEGER},
+      native_place = #{record.nativePlace,jdbcType=VARCHAR},
+      nation = #{record.nation,jdbcType=VARCHAR},
+      education = #{record.education,jdbcType=INTEGER},
+      graduate_institutions = #{record.graduateInstitutions,jdbcType=VARCHAR},
+      graduation_time = #{record.graduationTime,jdbcType=DATE},
+      work_unit = #{record.workUnit,jdbcType=VARCHAR},
+      work_place = #{record.workPlace,jdbcType=VARCHAR},
+      job_position = #{record.jobPosition,jdbcType=VARCHAR},
+      first_registration_time = #{record.firstRegistrationTime,jdbcType=TIMESTAMP}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="top.salutluoluo.pojo.TbUserInfoBase" >
+    update tb_user_info_base
+    <set >
+      <if test="userName != null" >
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="loginPassword != null" >
+        login_password = #{loginPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null" >
+        telephone = #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="identityCardValidate != null" >
+        identity_card_validate = #{identityCardValidate,jdbcType=INTEGER},
+      </if>
+      <if test="userNickname != null" >
+        user_nickname = #{userNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="userAvatar != null" >
+        user_avatar = #{userAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="creditRating != null" >
+        credit_rating = #{creditRating,jdbcType=INTEGER},
+      </if>
+      <if test="gender != null" >
+        gender = #{gender,jdbcType=INTEGER},
+      </if>
+      <if test="age != null" >
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="birthday != null" >
+        birthday = #{birthday,jdbcType=DATE},
+      </if>
+      <if test="health != null" >
+        health = #{health,jdbcType=INTEGER},
+      </if>
+      <if test="marriage != null" >
+        marriage = #{marriage,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="nativePlace != null" >
+        native_place = #{nativePlace,jdbcType=VARCHAR},
+      </if>
+      <if test="nation != null" >
+        nation = #{nation,jdbcType=VARCHAR},
+      </if>
+      <if test="education != null" >
+        education = #{education,jdbcType=INTEGER},
+      </if>
+      <if test="graduateInstitutions != null" >
+        graduate_institutions = #{graduateInstitutions,jdbcType=VARCHAR},
+      </if>
+      <if test="graduationTime != null" >
+        graduation_time = #{graduationTime,jdbcType=DATE},
+      </if>
+      <if test="workUnit != null" >
+        work_unit = #{workUnit,jdbcType=VARCHAR},
+      </if>
+      <if test="workPlace != null" >
+        work_place = #{workPlace,jdbcType=VARCHAR},
+      </if>
+      <if test="jobPosition != null" >
+        job_position = #{jobPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="firstRegistrationTime != null" >
+        first_registration_time = #{firstRegistrationTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_global_id = #{userGlobalId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="top.salutluoluo.pojo.TbUserInfoBase" >
+    update tb_user_info_base
+    set user_name = #{userName,jdbcType=VARCHAR},
+      login_password = #{loginPassword,jdbcType=VARCHAR},
+      telephone = #{telephone,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      identity_card_validate = #{identityCardValidate,jdbcType=INTEGER},
+      user_nickname = #{userNickname,jdbcType=VARCHAR},
+      user_avatar = #{userAvatar,jdbcType=VARCHAR},
+      credit_rating = #{creditRating,jdbcType=INTEGER},
+      gender = #{gender,jdbcType=INTEGER},
+      age = #{age,jdbcType=INTEGER},
+      birthday = #{birthday,jdbcType=DATE},
+      health = #{health,jdbcType=INTEGER},
+      marriage = #{marriage,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      country = #{country,jdbcType=INTEGER},
+      native_place = #{nativePlace,jdbcType=VARCHAR},
+      nation = #{nation,jdbcType=VARCHAR},
+      education = #{education,jdbcType=INTEGER},
+      graduate_institutions = #{graduateInstitutions,jdbcType=VARCHAR},
+      graduation_time = #{graduationTime,jdbcType=DATE},
+      work_unit = #{workUnit,jdbcType=VARCHAR},
+      work_place = #{workPlace,jdbcType=VARCHAR},
+      job_position = #{jobPosition,jdbcType=VARCHAR},
+      first_registration_time = #{firstRegistrationTime,jdbcType=TIMESTAMP}
+    where user_global_id = #{userGlobalId,jdbcType=VARCHAR}
+  </update>
+</mapper>
