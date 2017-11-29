@@ -2,6 +2,7 @@ package top.salutluoluo.pojo;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 
 public class TbUserLoginExample {
@@ -103,6 +104,32 @@ public class TbUserLoginExample {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
             criteria.add(new Criterion(condition, value1, value2));
+        }
+
+        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Time(value.getTime()), property);
+        }
+
+        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
+            if (values == null || values.size() == 0) {
+                throw new RuntimeException("Value list for " + property + " cannot be null or empty");
+            }
+            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
+            Iterator<Date> iter = values.iterator();
+            while (iter.hasNext()) {
+                timeList.add(new java.sql.Time(iter.next().getTime()));
+            }
+            addCriterion(condition, timeList, property);
+        }
+
+        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
+            }
+            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
         }
 
         public Criteria andUserGlobalIdIsNull() {
@@ -666,52 +693,52 @@ public class TbUserLoginExample {
         }
 
         public Criteria andLastLoginTimeEqualTo(Date value) {
-            addCriterion("last_login_time =", value, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time =", value, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeNotEqualTo(Date value) {
-            addCriterion("last_login_time <>", value, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time <>", value, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeGreaterThan(Date value) {
-            addCriterion("last_login_time >", value, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time >", value, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("last_login_time >=", value, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time >=", value, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeLessThan(Date value) {
-            addCriterion("last_login_time <", value, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time <", value, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeLessThanOrEqualTo(Date value) {
-            addCriterion("last_login_time <=", value, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time <=", value, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeIn(List<Date> values) {
-            addCriterion("last_login_time in", values, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time in", values, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeNotIn(List<Date> values) {
-            addCriterion("last_login_time not in", values, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time not in", values, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeBetween(Date value1, Date value2) {
-            addCriterion("last_login_time between", value1, value2, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time between", value1, value2, "lastLoginTime");
             return (Criteria) this;
         }
 
         public Criteria andLastLoginTimeNotBetween(Date value1, Date value2) {
-            addCriterion("last_login_time not between", value1, value2, "lastLoginTime");
+            addCriterionForJDBCTime("last_login_time not between", value1, value2, "lastLoginTime");
             return (Criteria) this;
         }
 
@@ -726,52 +753,52 @@ public class TbUserLoginExample {
         }
 
         public Criteria andLastOutTimeEqualTo(Date value) {
-            addCriterion("last_out_time =", value, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time =", value, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeNotEqualTo(Date value) {
-            addCriterion("last_out_time <>", value, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time <>", value, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeGreaterThan(Date value) {
-            addCriterion("last_out_time >", value, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time >", value, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("last_out_time >=", value, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time >=", value, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeLessThan(Date value) {
-            addCriterion("last_out_time <", value, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time <", value, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeLessThanOrEqualTo(Date value) {
-            addCriterion("last_out_time <=", value, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time <=", value, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeIn(List<Date> values) {
-            addCriterion("last_out_time in", values, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time in", values, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeNotIn(List<Date> values) {
-            addCriterion("last_out_time not in", values, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time not in", values, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeBetween(Date value1, Date value2) {
-            addCriterion("last_out_time between", value1, value2, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time between", value1, value2, "lastOutTime");
             return (Criteria) this;
         }
 
         public Criteria andLastOutTimeNotBetween(Date value1, Date value2) {
-            addCriterion("last_out_time not between", value1, value2, "lastOutTime");
+            addCriterionForJDBCTime("last_out_time not between", value1, value2, "lastOutTime");
             return (Criteria) this;
         }
 

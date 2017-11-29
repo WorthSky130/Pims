@@ -1,9 +1,8 @@
 package top.salutluoluo.pojo;
 
-import java.io.Serializable;
 import java.util.Date;
 
-public class TbUserInfoBase implements Serializable {
+public class TbUserInfoBase {
     private String userGlobalId;
 
     private String userName;
@@ -38,11 +37,11 @@ public class TbUserInfoBase implements Serializable {
 
     private String nativePlace;
 
-    private String nation;
+    private Integer nation;
 
     private Integer education;
 
-    private String graduateInstitutions;
+    private Integer graduateInstitutions;
 
     private Date graduationTime;
 
@@ -190,12 +189,12 @@ public class TbUserInfoBase implements Serializable {
         this.nativePlace = nativePlace == null ? null : nativePlace.trim();
     }
 
-    public String getNation() {
+    public Integer getNation() {
         return nation;
     }
 
-    public void setNation(String nation) {
-        this.nation = nation == null ? null : nation.trim();
+    public void setNation(Integer nation) {
+        this.nation = nation;
     }
 
     public Integer getEducation() {
@@ -206,12 +205,12 @@ public class TbUserInfoBase implements Serializable {
         this.education = education;
     }
 
-    public String getGraduateInstitutions() {
+    public Integer getGraduateInstitutions() {
         return graduateInstitutions;
     }
 
-    public void setGraduateInstitutions(String graduateInstitutions) {
-        this.graduateInstitutions = graduateInstitutions == null ? null : graduateInstitutions.trim();
+    public void setGraduateInstitutions(Integer graduateInstitutions) {
+        this.graduateInstitutions = graduateInstitutions;
     }
 
     public Date getGraduationTime() {
