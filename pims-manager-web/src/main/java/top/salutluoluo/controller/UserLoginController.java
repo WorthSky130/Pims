@@ -18,11 +18,14 @@ import top.salutluoluo.service.UserLoginService;
 public class UserLoginController {
     @Autowired
     private UserLoginService userLoginService;
-	
+   
 	@RequestMapping("/login/{userGlobalId}")
 	@ResponseBody
 	public TbUserLogin getUserLoginById(@PathVariable String userGlobalId){
-	TbUserLogin userLogin =  userLoginService.getUserLoginbyId(userGlobalId);
-	      return userLogin;
+		TbUserLogin userLogin =  userLoginService.getUserLoginbyId(userGlobalId); 
+		return userLogin;
+		
+		
+	
 	}
 }

@@ -1,8 +1,9 @@
 package top.salutluoluo.pojo;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class TbUserInfoBase {
+public class TbUserInfoBase implements Serializable{
     private String userGlobalId;
 
     private String userName;
