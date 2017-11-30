@@ -10,8 +10,8 @@
     <result column="freezing" property="freezing" jdbcType="INTEGER" />
     <result column="freeze_reason" property="freezeReason" jdbcType="VARCHAR" />
     <result column="last_password" property="lastPassword" jdbcType="VARCHAR" />
-    <result column="last_login_time" property="lastLoginTime" jdbcType="TIME" />
-    <result column="last_out_time" property="lastOutTime" jdbcType="TIME" />
+    <result column="last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
+    <result column="last_out_time" property="lastOutTime" jdbcType="TIMESTAMP" />
     <result column="last_login_local" property="lastLoginLocal" jdbcType="VARCHAR" />
     <result column="use_platform" property="usePlatform" jdbcType="VARCHAR" />
     <result column="login_failure_time" property="loginFailureTime" jdbcType="INTEGER" />
@@ -116,8 +116,8 @@
       login_failure_time)
     values (#{userGlobalId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, #{freezing,jdbcType=INTEGER}, 
-      #{freezeReason,jdbcType=VARCHAR}, #{lastPassword,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIME}, 
-      #{lastOutTime,jdbcType=TIME}, #{lastLoginLocal,jdbcType=VARCHAR}, #{usePlatform,jdbcType=VARCHAR}, 
+      #{freezeReason,jdbcType=VARCHAR}, #{lastPassword,jdbcType=VARCHAR}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{lastOutTime,jdbcType=TIMESTAMP}, #{lastLoginLocal,jdbcType=VARCHAR}, #{usePlatform,jdbcType=VARCHAR}, 
       #{loginFailureTime,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="top.salutluoluo.pojo.TbUserLogin" >
@@ -189,10 +189,10 @@
         #{lastPassword,jdbcType=VARCHAR},
       </if>
       <if test="lastLoginTime != null" >
-        #{lastLoginTime,jdbcType=TIME},
+        #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="lastOutTime != null" >
-        #{lastOutTime,jdbcType=TIME},
+        #{lastOutTime,jdbcType=TIMESTAMP},
       </if>
       <if test="lastLoginLocal != null" >
         #{lastLoginLocal,jdbcType=VARCHAR},
@@ -239,10 +239,10 @@
         last_password = #{record.lastPassword,jdbcType=VARCHAR},
       </if>
       <if test="record.lastLoginTime != null" >
-        last_login_time = #{record.lastLoginTime,jdbcType=TIME},
+        last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastOutTime != null" >
-        last_out_time = #{record.lastOutTime,jdbcType=TIME},
+        last_out_time = #{record.lastOutTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.lastLoginLocal != null" >
         last_login_local = #{record.lastLoginLocal,jdbcType=VARCHAR},
@@ -268,8 +268,8 @@
       freezing = #{record.freezing,jdbcType=INTEGER},
       freeze_reason = #{record.freezeReason,jdbcType=VARCHAR},
       last_password = #{record.lastPassword,jdbcType=VARCHAR},
-      last_login_time = #{record.lastLoginTime,jdbcType=TIME},
-      last_out_time = #{record.lastOutTime,jdbcType=TIME},
+      last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
+      last_out_time = #{record.lastOutTime,jdbcType=TIMESTAMP},
       last_login_local = #{record.lastLoginLocal,jdbcType=VARCHAR},
       use_platform = #{record.usePlatform,jdbcType=VARCHAR},
       login_failure_time = #{record.loginFailureTime,jdbcType=INTEGER}
@@ -302,10 +302,10 @@
         last_password = #{lastPassword,jdbcType=VARCHAR},
       </if>
       <if test="lastLoginTime != null" >
-        last_login_time = #{lastLoginTime,jdbcType=TIME},
+        last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       </if>
       <if test="lastOutTime != null" >
-        last_out_time = #{lastOutTime,jdbcType=TIME},
+        last_out_time = #{lastOutTime,jdbcType=TIMESTAMP},
       </if>
       <if test="lastLoginLocal != null" >
         last_login_local = #{lastLoginLocal,jdbcType=VARCHAR},
@@ -328,8 +328,8 @@
       freezing = #{freezing,jdbcType=INTEGER},
       freeze_reason = #{freezeReason,jdbcType=VARCHAR},
       last_password = #{lastPassword,jdbcType=VARCHAR},
-      last_login_time = #{lastLoginTime,jdbcType=TIME},
-      last_out_time = #{lastOutTime,jdbcType=TIME},
+      last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
+      last_out_time = #{lastOutTime,jdbcType=TIMESTAMP},
       last_login_local = #{lastLoginLocal,jdbcType=VARCHAR},
       use_platform = #{usePlatform,jdbcType=VARCHAR},
       login_failure_time = #{loginFailureTime,jdbcType=INTEGER}

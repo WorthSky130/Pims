@@ -106,30 +106,30 @@ public class TbUserInfoBaseExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        protected void addCriterionForJDBCTime(String condition, Date value, String property) {
+        protected void addCriterionForJDBCDate(String condition, Date value, String property) {
             if (value == null) {
                 throw new RuntimeException("Value for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Time(value.getTime()), property);
+            addCriterion(condition, new java.sql.Date(value.getTime()), property);
         }
 
-        protected void addCriterionForJDBCTime(String condition, List<Date> values, String property) {
+        protected void addCriterionForJDBCDate(String condition, List<Date> values, String property) {
             if (values == null || values.size() == 0) {
                 throw new RuntimeException("Value list for " + property + " cannot be null or empty");
             }
-            List<java.sql.Time> timeList = new ArrayList<java.sql.Time>();
+            List<java.sql.Date> dateList = new ArrayList<java.sql.Date>();
             Iterator<Date> iter = values.iterator();
             while (iter.hasNext()) {
-                timeList.add(new java.sql.Time(iter.next().getTime()));
+                dateList.add(new java.sql.Date(iter.next().getTime()));
             }
-            addCriterion(condition, timeList, property);
+            addCriterion(condition, dateList, property);
         }
 
-        protected void addCriterionForJDBCTime(String condition, Date value1, Date value2, String property) {
+        protected void addCriterionForJDBCDate(String condition, Date value1, Date value2, String property) {
             if (value1 == null || value2 == null) {
                 throw new RuntimeException("Between values for " + property + " cannot be null");
             }
-            addCriterion(condition, new java.sql.Time(value1.getTime()), new java.sql.Time(value2.getTime()), property);
+            addCriterion(condition, new java.sql.Date(value1.getTime()), new java.sql.Date(value2.getTime()), property);
         }
 
         public Criteria andUserGlobalIdIsNull() {
@@ -873,52 +873,52 @@ public class TbUserInfoBaseExample {
         }
 
         public Criteria andBirthdayEqualTo(Date value) {
-            addCriterionForJDBCTime("birthday =", value, "birthday");
+            addCriterionForJDBCDate("birthday =", value, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayNotEqualTo(Date value) {
-            addCriterionForJDBCTime("birthday <>", value, "birthday");
+            addCriterionForJDBCDate("birthday <>", value, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayGreaterThan(Date value) {
-            addCriterionForJDBCTime("birthday >", value, "birthday");
+            addCriterionForJDBCDate("birthday >", value, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("birthday >=", value, "birthday");
+            addCriterionForJDBCDate("birthday >=", value, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayLessThan(Date value) {
-            addCriterionForJDBCTime("birthday <", value, "birthday");
+            addCriterionForJDBCDate("birthday <", value, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("birthday <=", value, "birthday");
+            addCriterionForJDBCDate("birthday <=", value, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayIn(List<Date> values) {
-            addCriterionForJDBCTime("birthday in", values, "birthday");
+            addCriterionForJDBCDate("birthday in", values, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayNotIn(List<Date> values) {
-            addCriterionForJDBCTime("birthday not in", values, "birthday");
+            addCriterionForJDBCDate("birthday not in", values, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("birthday between", value1, value2, "birthday");
+            addCriterionForJDBCDate("birthday between", value1, value2, "birthday");
             return (Criteria) this;
         }
 
         public Criteria andBirthdayNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("birthday not between", value1, value2, "birthday");
+            addCriterionForJDBCDate("birthday not between", value1, value2, "birthday");
             return (Criteria) this;
         }
 
@@ -1433,52 +1433,52 @@ public class TbUserInfoBaseExample {
         }
 
         public Criteria andGraduationTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("graduation_time =", value, "graduationTime");
+            addCriterionForJDBCDate("graduation_time =", value, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("graduation_time <>", value, "graduationTime");
+            addCriterionForJDBCDate("graduation_time <>", value, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("graduation_time >", value, "graduationTime");
+            addCriterionForJDBCDate("graduation_time >", value, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("graduation_time >=", value, "graduationTime");
+            addCriterionForJDBCDate("graduation_time >=", value, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeLessThan(Date value) {
-            addCriterionForJDBCTime("graduation_time <", value, "graduationTime");
+            addCriterionForJDBCDate("graduation_time <", value, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("graduation_time <=", value, "graduationTime");
+            addCriterionForJDBCDate("graduation_time <=", value, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("graduation_time in", values, "graduationTime");
+            addCriterionForJDBCDate("graduation_time in", values, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("graduation_time not in", values, "graduationTime");
+            addCriterionForJDBCDate("graduation_time not in", values, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("graduation_time between", value1, value2, "graduationTime");
+            addCriterionForJDBCDate("graduation_time between", value1, value2, "graduationTime");
             return (Criteria) this;
         }
 
         public Criteria andGraduationTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("graduation_time not between", value1, value2, "graduationTime");
+            addCriterionForJDBCDate("graduation_time not between", value1, value2, "graduationTime");
             return (Criteria) this;
         }
 
@@ -1703,52 +1703,52 @@ public class TbUserInfoBaseExample {
         }
 
         public Criteria andFirstRegistrationTimeEqualTo(Date value) {
-            addCriterionForJDBCTime("first_registration_time =", value, "firstRegistrationTime");
+            addCriterion("first_registration_time =", value, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeNotEqualTo(Date value) {
-            addCriterionForJDBCTime("first_registration_time <>", value, "firstRegistrationTime");
+            addCriterion("first_registration_time <>", value, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeGreaterThan(Date value) {
-            addCriterionForJDBCTime("first_registration_time >", value, "firstRegistrationTime");
+            addCriterion("first_registration_time >", value, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeGreaterThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("first_registration_time >=", value, "firstRegistrationTime");
+            addCriterion("first_registration_time >=", value, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeLessThan(Date value) {
-            addCriterionForJDBCTime("first_registration_time <", value, "firstRegistrationTime");
+            addCriterion("first_registration_time <", value, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeLessThanOrEqualTo(Date value) {
-            addCriterionForJDBCTime("first_registration_time <=", value, "firstRegistrationTime");
+            addCriterion("first_registration_time <=", value, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeIn(List<Date> values) {
-            addCriterionForJDBCTime("first_registration_time in", values, "firstRegistrationTime");
+            addCriterion("first_registration_time in", values, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeNotIn(List<Date> values) {
-            addCriterionForJDBCTime("first_registration_time not in", values, "firstRegistrationTime");
+            addCriterion("first_registration_time not in", values, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("first_registration_time between", value1, value2, "firstRegistrationTime");
+            addCriterion("first_registration_time between", value1, value2, "firstRegistrationTime");
             return (Criteria) this;
         }
 
         public Criteria andFirstRegistrationTimeNotBetween(Date value1, Date value2) {
-            addCriterionForJDBCTime("first_registration_time not between", value1, value2, "firstRegistrationTime");
+            addCriterion("first_registration_time not between", value1, value2, "firstRegistrationTime");
             return (Criteria) this;
         }
     }

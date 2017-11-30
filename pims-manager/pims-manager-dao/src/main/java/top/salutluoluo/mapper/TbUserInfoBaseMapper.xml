@@ -13,7 +13,7 @@
     <result column="credit_rating" property="creditRating" jdbcType="INTEGER" />
     <result column="gender" property="gender" jdbcType="INTEGER" />
     <result column="age" property="age" jdbcType="INTEGER" />
-    <result column="birthday" property="birthday" jdbcType="TIME" />
+    <result column="birthday" property="birthday" jdbcType="DATE" />
     <result column="health" property="health" jdbcType="INTEGER" />
     <result column="marriage" property="marriage" jdbcType="INTEGER" />
     <result column="address" property="address" jdbcType="VARCHAR" />
@@ -22,11 +22,11 @@
     <result column="nation" property="nation" jdbcType="INTEGER" />
     <result column="education" property="education" jdbcType="INTEGER" />
     <result column="graduate_institutions" property="graduateInstitutions" jdbcType="INTEGER" />
-    <result column="graduation_time" property="graduationTime" jdbcType="TIME" />
+    <result column="graduation_time" property="graduationTime" jdbcType="DATE" />
     <result column="work_unit" property="workUnit" jdbcType="VARCHAR" />
     <result column="work_place" property="workPlace" jdbcType="VARCHAR" />
     <result column="job_position" property="jobPosition" jdbcType="VARCHAR" />
-    <result column="first_registration_time" property="firstRegistrationTime" jdbcType="TIME" />
+    <result column="first_registration_time" property="firstRegistrationTime" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -135,12 +135,12 @@
     values (#{userGlobalId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{loginPassword,jdbcType=VARCHAR}, 
       #{telephone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{identityCardValidate,jdbcType=INTEGER}, 
       #{userNickname,jdbcType=VARCHAR}, #{userAvatar,jdbcType=VARCHAR}, #{creditRating,jdbcType=INTEGER}, 
-      #{gender,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{birthday,jdbcType=TIME}, 
+      #{gender,jdbcType=INTEGER}, #{age,jdbcType=INTEGER}, #{birthday,jdbcType=DATE}, 
       #{health,jdbcType=INTEGER}, #{marriage,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
       #{country,jdbcType=INTEGER}, #{nativePlace,jdbcType=VARCHAR}, #{nation,jdbcType=INTEGER}, 
-      #{education,jdbcType=INTEGER}, #{graduateInstitutions,jdbcType=INTEGER}, #{graduationTime,jdbcType=TIME}, 
+      #{education,jdbcType=INTEGER}, #{graduateInstitutions,jdbcType=INTEGER}, #{graduationTime,jdbcType=DATE}, 
       #{workUnit,jdbcType=VARCHAR}, #{workPlace,jdbcType=VARCHAR}, #{jobPosition,jdbcType=VARCHAR}, 
-      #{firstRegistrationTime,jdbcType=TIME})
+      #{firstRegistrationTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="top.salutluoluo.pojo.TbUserInfoBase" >
     insert into tb_user_info_base
@@ -256,7 +256,7 @@
         #{age,jdbcType=INTEGER},
       </if>
       <if test="birthday != null" >
-        #{birthday,jdbcType=TIME},
+        #{birthday,jdbcType=DATE},
       </if>
       <if test="health != null" >
         #{health,jdbcType=INTEGER},
@@ -283,7 +283,7 @@
         #{graduateInstitutions,jdbcType=INTEGER},
       </if>
       <if test="graduationTime != null" >
-        #{graduationTime,jdbcType=TIME},
+        #{graduationTime,jdbcType=DATE},
       </if>
       <if test="workUnit != null" >
         #{workUnit,jdbcType=VARCHAR},
@@ -295,7 +295,7 @@
         #{jobPosition,jdbcType=VARCHAR},
       </if>
       <if test="firstRegistrationTime != null" >
-        #{firstRegistrationTime,jdbcType=TIME},
+        #{firstRegistrationTime,jdbcType=TIMESTAMP},
       </if>
     </trim>
   </insert>
@@ -342,7 +342,7 @@
         age = #{record.age,jdbcType=INTEGER},
       </if>
       <if test="record.birthday != null" >
-        birthday = #{record.birthday,jdbcType=TIME},
+        birthday = #{record.birthday,jdbcType=DATE},
       </if>
       <if test="record.health != null" >
         health = #{record.health,jdbcType=INTEGER},
@@ -369,7 +369,7 @@
         graduate_institutions = #{record.graduateInstitutions,jdbcType=INTEGER},
       </if>
       <if test="record.graduationTime != null" >
-        graduation_time = #{record.graduationTime,jdbcType=TIME},
+        graduation_time = #{record.graduationTime,jdbcType=DATE},
       </if>
       <if test="record.workUnit != null" >
         work_unit = #{record.workUnit,jdbcType=VARCHAR},
@@ -381,7 +381,7 @@
         job_position = #{record.jobPosition,jdbcType=VARCHAR},
       </if>
       <if test="record.firstRegistrationTime != null" >
-        first_registration_time = #{record.firstRegistrationTime,jdbcType=TIME},
+        first_registration_time = #{record.firstRegistrationTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -401,7 +401,7 @@
       credit_rating = #{record.creditRating,jdbcType=INTEGER},
       gender = #{record.gender,jdbcType=INTEGER},
       age = #{record.age,jdbcType=INTEGER},
-      birthday = #{record.birthday,jdbcType=TIME},
+      birthday = #{record.birthday,jdbcType=DATE},
       health = #{record.health,jdbcType=INTEGER},
       marriage = #{record.marriage,jdbcType=INTEGER},
       address = #{record.address,jdbcType=VARCHAR},
@@ -410,11 +410,11 @@
       nation = #{record.nation,jdbcType=INTEGER},
       education = #{record.education,jdbcType=INTEGER},
       graduate_institutions = #{record.graduateInstitutions,jdbcType=INTEGER},
-      graduation_time = #{record.graduationTime,jdbcType=TIME},
+      graduation_time = #{record.graduationTime,jdbcType=DATE},
       work_unit = #{record.workUnit,jdbcType=VARCHAR},
       work_place = #{record.workPlace,jdbcType=VARCHAR},
       job_position = #{record.jobPosition,jdbcType=VARCHAR},
-      first_registration_time = #{record.firstRegistrationTime,jdbcType=TIME}
+      first_registration_time = #{record.firstRegistrationTime,jdbcType=TIMESTAMP}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -453,7 +453,7 @@
         age = #{age,jdbcType=INTEGER},
       </if>
       <if test="birthday != null" >
-        birthday = #{birthday,jdbcType=TIME},
+        birthday = #{birthday,jdbcType=DATE},
       </if>
       <if test="health != null" >
         health = #{health,jdbcType=INTEGER},
@@ -480,7 +480,7 @@
         graduate_institutions = #{graduateInstitutions,jdbcType=INTEGER},
       </if>
       <if test="graduationTime != null" >
-        graduation_time = #{graduationTime,jdbcType=TIME},
+        graduation_time = #{graduationTime,jdbcType=DATE},
       </if>
       <if test="workUnit != null" >
         work_unit = #{workUnit,jdbcType=VARCHAR},
@@ -492,7 +492,7 @@
         job_position = #{jobPosition,jdbcType=VARCHAR},
       </if>
       <if test="firstRegistrationTime != null" >
-        first_registration_time = #{firstRegistrationTime,jdbcType=TIME},
+        first_registration_time = #{firstRegistrationTime,jdbcType=TIMESTAMP},
       </if>
     </set>
     where user_global_id = #{userGlobalId,jdbcType=VARCHAR}
@@ -509,7 +509,7 @@
       credit_rating = #{creditRating,jdbcType=INTEGER},
       gender = #{gender,jdbcType=INTEGER},
       age = #{age,jdbcType=INTEGER},
-      birthday = #{birthday,jdbcType=TIME},
+      birthday = #{birthday,jdbcType=DATE},
       health = #{health,jdbcType=INTEGER},
       marriage = #{marriage,jdbcType=INTEGER},
       address = #{address,jdbcType=VARCHAR},
@@ -518,11 +518,11 @@
       nation = #{nation,jdbcType=INTEGER},
       education = #{education,jdbcType=INTEGER},
       graduate_institutions = #{graduateInstitutions,jdbcType=INTEGER},
-      graduation_time = #{graduationTime,jdbcType=TIME},
+      graduation_time = #{graduationTime,jdbcType=DATE},
       work_unit = #{workUnit,jdbcType=VARCHAR},
       work_place = #{workPlace,jdbcType=VARCHAR},
       job_position = #{jobPosition,jdbcType=VARCHAR},
-      first_registration_time = #{firstRegistrationTime,jdbcType=TIME}
+      first_registration_time = #{firstRegistrationTime,jdbcType=TIMESTAMP}
     where user_global_id = #{userGlobalId,jdbcType=VARCHAR}
   </update>
 </mapper>
