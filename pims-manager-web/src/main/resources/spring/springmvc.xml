@@ -22,6 +22,11 @@
 	<!-- 配置资源映射 -->
 	<mvc:resources location="/css/" mapping="/css/**"/>
 	<mvc:resources location="/js/" mapping="/js/**"/>
+	<mvc:resources location="/bootstrap/" mapping="/bootstrap/**"/>
+	<mvc:resources location="/dist/" mapping="/dist/**"/>
+	<mvc:resources location="/fonts/" mapping="/fonts/**"/>
+	<mvc:resources location="/images/" mapping="/images/**"/>
+	<mvc:resources location="/plugins/" mapping="/plugins/**"/>
 	<!-- 引用dubbo服务 -->
 	<dubbo:application name="pims-manager-web"/>
 	<dubbo:registry protocol="zookeeper" address="114.115.202.54:2181"/>	
